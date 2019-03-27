@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <audio id="music" autoplay="autoplay" preload loop="loop" >
+    <audio id="music" autoplay="autoplay" preload="preload" loop="loop" >
         <source src="renxi.mp3" type="audio/mp3" />
     </audio>
     <div id="main">
@@ -66,8 +66,13 @@
 
     <script>
         (function () {
-            var autoplayVideo = document.getElementById("music");
-            autoplayVideo.play();
+            document.getElementById('music').play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                    document.getElementById('music').play();
+                });
+            }, false);
+           
             var canvas = $('#canvas');
 
             if (!canvas[0].getContext) {
