@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <audio autoplay="autoplay">
+    <audio id="music" autoplay="autoplay" preload loop="loop" >
         <source src="renxi.mp3" type="audio/mp3" />
     </audio>
     <div id="main">
@@ -66,6 +66,8 @@
 
     <script>
         (function () {
+            var autoplayVideo = document.getElementById("music");
+            autoplayVideo.play();
             var canvas = $('#canvas');
 
             if (!canvas[0].getContext) {
