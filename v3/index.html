@@ -723,7 +723,7 @@
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/scripts.js'></script>
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/mediaelement-and-player.min.js'></script>
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/wp-mediaelement.js'></script>
-   
+
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/bootstrap.min.js'></script>
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/modernizr.custom.js'></script>
 
@@ -749,17 +749,18 @@
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/style-switcher.js'></script>
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/comment-reply.min.js'></script>
     <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/jquery.nav.js'></script>
-    <div style="position:absolute; top:150px; right:50px;z-index: 9999999;">
-        <audio id="main_audio" autoplay="autoplay" preload="auto" loop="loop">
-            <source src="https://www.wirelesscom.cn/Content/ysq/music/love1.mp3" type="audio/mp3" /><!--爱一点-->
-            <source src="https://www.wirelesscom.cn/Content/ysq/music/love1.wma" type="audio/mpeg" /><!--爱一点-->
-            <source src="https://www.wirelesscom.cn/Content/ysq/music/love1.m4a" type="audio/mpeg" /><!--爱一点-->
-            <source src="https://www.wirelesscom.cn/Content/ysq/music/love1.ogg" type="audio/ogg" /><!--爱一点-->
-            <!--<source src="music/love2.mp3" type="audio/mpeg" />--><!--月亮代表我的心-->
-            <!--<source src="music/love3.mp3" type="audio/mpeg" />--><!--简单爱-->
-            <!--<source src="music/love4.mp3" type="audio/mpeg" />--><!--全世界宣布爱你-->
-        </audio>
-        <a class="c-white fs-12 icon-play rotate" id="btn-play" href="javascript:void(0);"></a>
+    <script type='text/javascript' src='https://www.wirelesscom.cn/Content/ysq/js/wx-audio.js'></script>
+    <div id="div_music" style="position:absolute; top:150px; right:50px;z-index: 9999999;">
+        <!--<audio id="main_audio" autoplay="autoplay" preload="auto" loop="loop">-->
+            <!--<source src="https://www.wirelesscom.cn/Content/ysq/music/love1.mp3" type="audio/mp3" />--><!--爱一点-->
+        <!--<source src="https://www.wirelesscom.cn/Content/ysq/music/love1.wma" type="audio/mpeg" />--><!--爱一点-->
+        <!--<source src="https://www.wirelesscom.cn/Content/ysq/music/love1.m4a" type="audio/mpeg" />--><!--爱一点-->
+        <!--<source src="https://www.wirelesscom.cn/Content/ysq/music/love1.ogg" type="audio/ogg" />--><!--爱一点-->
+        <!--<source src="music/love2.mp3" type="audio/mpeg" />--><!--月亮代表我的心-->
+        <!--<source src="music/love3.mp3" type="audio/mpeg" />--><!--简单爱-->
+        <!--<source src="music/love4.mp3" type="audio/mpeg" />--><!--全世界宣布爱你-->
+        <!--</audio>-->
+        <a class="c-white fs-12 icon-play rotate" id="btn-play" href="javascript:void(0);"></a>-->
     </div>
     <script type="text/javascript">
         var PlutonWidth = { menulogin: "50" };
@@ -773,21 +774,34 @@
     </script>
     <script type="text/javascript">
         //获取picid函数
-        $(function () {
+        //$(function () {
 
-            var isPlaying = function (audio) { return !audio.paused; }
-            var a = document.getElementById('main_audio');
-            $('#btn-play').on('click', function () {
-                if ($(this).hasClass('rotate')) {
-                    a.pause();
-                    $(this).removeClass('rotate');
-                } else {
-                    a.play();
-                    $(this).addClass('rotate');
-                }
-            });
+        //    var isPlaying = function (audio) { return !audio.paused; }
+        //    var a = document.getElementById('main_audio');
+        //    $('#btn-play').on('click', function () {
+        //        if ($(this).hasClass('rotate')) {
+        //            a.pause();
+        //            $(this).removeClass('rotate');
+        //        } else {
+        //            a.play();
+        //            $(this).addClass('rotate');
+        //        }
+        //    });
 
-        })
+        //})
+        var wxAudio = new WxAudio({
+            ele: '#div_music',
+            title: '',
+            disc: '',
+            src: 'https://www.wirelesscom.cn/Content/ysq/music/love1.mp3',
+            width: '0px',
+            autoplay: true,
+            loop: true,
+            ended: function () {
+                //alert('播放结束')
+            }
+        });
+        wxAudio.audioPlay();
     </script>
 </body>
 
